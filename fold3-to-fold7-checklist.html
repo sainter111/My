@@ -1,0 +1,844 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>폴드3 → 폴드7 교체 체크리스트</title>
+<style>
+  :root {
+    --bg: #F4F8FF;
+    --surface: #FFFFFF;
+    --surface2: #EEF3FB;
+    --border: #D4DFF0;
+    --text: #0F1C2D;
+    --text-sub: #5B7494;
+    --accent: #2563EB;
+    --accent-light: #EBF2FF;
+    --warn: #F59E0B;
+    --warn-light: #FFFBEB;
+    --danger: #EF4444;
+    --danger-light: #FEF2F2;
+    --check-done: #16A34A;
+    --check-done-light: #DCFCE7;
+    --progress-track: #D4DFF0;
+    --shadow: 0 1px 4px rgba(15,28,45,.08);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0B1524;
+      --surface: #132032;
+      --surface2: #1A2B42;
+      --border: #243650;
+      --text: #E8F0FF;
+      --text-sub: #7FA0C4;
+      --accent: #3B82F6;
+      --accent-light: #1E2F4A;
+      --warn: #FBBF24;
+      --warn-light: #2A2010;
+      --danger: #F87171;
+      --danger-light: #2A1515;
+      --check-done: #22C55E;
+      --check-done-light: #132A1C;
+      --progress-track: #243650;
+      --shadow: 0 1px 6px rgba(0,0,0,.35);
+    }
+  }
+
+  :root[data-theme="light"] {
+    --bg: #F4F8FF; --surface: #FFFFFF; --surface2: #EEF3FB; --border: #D4DFF0;
+    --text: #0F1C2D; --text-sub: #5B7494; --accent: #2563EB; --accent-light: #EBF2FF;
+    --warn: #F59E0B; --warn-light: #FFFBEB; --danger: #EF4444; --danger-light: #FEF2F2;
+    --check-done: #16A34A; --check-done-light: #DCFCE7; --progress-track: #D4DFF0;
+    --shadow: 0 1px 4px rgba(15,28,45,.08);
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #0B1524; --surface: #132032; --surface2: #1A2B42; --border: #243650;
+    --text: #E8F0FF; --text-sub: #7FA0C4; --accent: #3B82F6; --accent-light: #1E2F4A;
+    --warn: #FBBF24; --warn-light: #2A2010; --danger: #F87171; --danger-light: #2A1515;
+    --check-done: #22C55E; --check-done-light: #132A1C; --progress-track: #243650;
+    --shadow: 0 1px 6px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 18px 10px;
+    box-shadow: var(--shadow);
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .header-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -.2px;
+    color: var(--text);
+  }
+
+  .header-sub {
+    font-size: 12px;
+    color: var(--text-sub);
+    margin-top: 1px;
+  }
+
+  .theme-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--text-sub);
+    line-height: 1;
+  }
+
+  .progress-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .progress-bar-wrap {
+    flex: 1;
+    height: 6px;
+    background: var(--progress-track);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 99px;
+    transition: width .3s ease;
+  }
+
+  .progress-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    min-width: 36px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .content { padding: 16px; max-width: 480px; margin: 0 auto; }
+
+  .phase {
+    background: var(--surface);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow);
+  }
+
+  .phase-header {
+    padding: 14px 16px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .phase-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-sub);
+    margin-bottom: 3px;
+  }
+
+  .phase-title {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: -.3px;
+    text-wrap: balance;
+  }
+
+  .phase-title.before { color: var(--danger); }
+  .phase-title.after  { color: var(--accent); }
+
+  .phase-progress {
+    font-size: 12px;
+    color: var(--text-sub);
+    margin-top: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .category { border-top: 1px solid var(--border); }
+  .category:first-of-type { border-top: none; }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 16px 10px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .category-header:active { background: var(--surface2); }
+
+  .cat-icon { font-size: 15px; flex-shrink: 0; }
+
+  .cat-name {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: -.1px;
+    flex: 1;
+  }
+
+  .cat-count {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-sub);
+    background: var(--surface2);
+    border-radius: 99px;
+    padding: 2px 7px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cat-count.done { background: var(--check-done-light); color: var(--check-done); }
+
+  .cat-chevron {
+    font-size: 10px;
+    color: var(--text-sub);
+    transition: transform .2s;
+    flex-shrink: 0;
+  }
+
+  .cat-chevron.open { transform: rotate(90deg); }
+
+  .cat-items { display: none; }
+  .cat-items.open { display: block; }
+
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 11px 16px;
+    cursor: pointer;
+    border-top: 1px solid var(--border);
+    -webkit-tap-highlight-color: transparent;
+    transition: background .15s;
+  }
+
+  .item:active { background: var(--surface2); }
+  .item.checked { background: var(--check-done-light); }
+  .item.warn-item { background: var(--warn-light); }
+  .item.crit-item { background: var(--danger-light); }
+  .item.checked.warn-item,
+  .item.checked.crit-item { background: var(--check-done-light); }
+
+  .check-box {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: all .18s;
+    background: var(--surface);
+  }
+
+  .item.checked .check-box {
+    background: var(--check-done);
+    border-color: var(--check-done);
+  }
+
+  .check-mark {
+    display: none;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .item.checked .check-mark { display: block; }
+
+  .item-body { flex: 1; min-width: 0; }
+
+  .item-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: -.1px;
+    color: var(--text);
+    text-wrap: balance;
+  }
+
+  .item.checked .item-text {
+    color: var(--text-sub);
+    text-decoration: line-through;
+    text-decoration-color: var(--text-sub);
+  }
+
+  .item-note {
+    font-size: 12px;
+    color: var(--text-sub);
+    margin-top: 3px;
+    line-height: 1.5;
+  }
+
+  .item.checked .item-note { color: var(--progress-track); }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  .badge-crit { background: var(--danger); color: #fff; }
+  .badge-warn { background: var(--warn); color: #fff; }
+
+  .done-banner {
+    display: none;
+    background: var(--check-done);
+    color: #fff;
+    border-radius: 14px;
+    padding: 20px 18px;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .done-banner.show { display: block; }
+
+  .done-banner-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  .done-banner-sub {
+    font-size: 13px;
+    opacity: .85;
+  }
+
+  .summary-card {
+    background: var(--accent-light);
+    border: 1px solid var(--accent);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+
+  .summary-title {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .summary-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+
+  .summary-row:last-child { border-bottom: none; }
+
+  .summary-num {
+    font-weight: 800;
+    color: var(--accent);
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+    min-width: 18px;
+  }
+
+  .summary-text { color: var(--text); line-height: 1.45; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .progress-bar-fill, .cat-chevron { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-title">폴드3 → 폴드7 교체 체크리스트</div>
+      <div class="header-sub">자급제 · SK텔레콤 유지</div>
+    </div>
+    <button class="theme-btn" id="themeToggle" aria-label="테마 전환">☀</button>
+  </div>
+  <div class="progress-row">
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+    </div>
+    <div class="progress-label" id="progressLabel">0%</div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="done-banner" id="doneBanner">
+    <div class="done-banner-title">모든 항목 완료!</div>
+    <div class="done-banner-sub">폴드7 개통 준비 끝 · 걱정 없이 사용하세요</div>
+  </div>
+
+  <div class="summary-card">
+    <div class="summary-title">이것만은 절대 잊지 말 것</div>
+    <div class="summary-row">
+      <span class="summary-num">1</span>
+      <span class="summary-text">유심보호서비스 <strong>해지 먼저</strong> — 안 하면 개통 불가</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-num">2</span>
+      <span class="summary-text">티머니 잔액 <strong>이전 처리</strong> — 유심 바꾸면 잔액 삭제</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-num">3</span>
+      <span class="summary-text">카카오톡 <strong>별도 백업</strong> — 스마트 스위치 포함 안 됨</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-num">4</span>
+      <span class="summary-text">OTP 앱 <strong>백업 코드 저장</strong> — 잃으면 계정 잠김</span>
+    </div>
+    <div class="summary-row">
+      <span class="summary-num">5</span>
+      <span class="summary-text">개통 확인 후 유심보호서비스 <strong>재가입</strong></span>
+    </div>
+  </div>
+
+  <!-- BEFORE -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-label">Step 1</div>
+      <div class="phase-title before">교체 전 — 구 폰에서 할 일</div>
+      <div class="phase-progress" id="before-progress">0 / 15 완료</div>
+    </div>
+
+    <div class="category" id="cat-comm">
+      <div class="category-header" onclick="toggleCat('cat-comm')">
+        <span class="cat-icon">📶</span>
+        <span class="cat-name">통신 관련</span>
+        <span class="cat-count" id="count-cat-comm">0/2</span>
+        <span class="cat-chevron open" id="chev-cat-comm">▶</span>
+      </div>
+      <div class="cat-items open" id="items-cat-comm">
+        <div class="item crit-item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text"><span class="badge badge-crit">필수</span>유심보호서비스 해지</div>
+            <div class="item-note">T월드 앱 → 나의 서비스 → 유심보호서비스 해지 · 또는 114 전화. 이거 먼저 안 하면 유심 꽂아도 개통 불가.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">현재 요금제 확인 (스크린샷)</div>
+            <div class="item-note">T월드 앱 → 나의 이용정보. 기변 후 요금제 이상 시 비교자료.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-backup">
+      <div class="category-header" onclick="toggleCat('cat-backup')">
+        <span class="cat-icon">💾</span>
+        <span class="cat-name">데이터 백업</span>
+        <span class="cat-count" id="count-cat-backup">0/4</span>
+        <span class="cat-chevron open" id="chev-cat-backup">▶</span>
+      </div>
+      <div class="cat-items open" id="items-cat-backup">
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">스마트 스위치 백업</div>
+            <div class="item-note">USB-C to C 케이블 직접 연결 권장 (Wi-Fi보다 빠름). 연락처·통화기록·문자·사진·앱·설정 통째로.</div>
+          </div>
+        </div>
+        <div class="item crit-item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text"><span class="badge badge-crit">별도</span>카카오톡 대화 백업</div>
+            <div class="item-note">카카오톡 → 설정 → 채팅 → 대화 백업. 스마트 스위치가 자동 이동 안 함.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">삼성 클라우드 백업</div>
+            <div class="item-note">설정 → 계정/클라우드 → 삼성 클라우드 → 지금 백업.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">구글 백업 확인</div>
+            <div class="item-note">설정 → Google → 백업 → 지금 백업.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-apps">
+      <div class="category-header" onclick="toggleCat('cat-apps')">
+        <span class="cat-icon">📱</span>
+        <span class="cat-name">앱별 개별 처리</span>
+        <span class="cat-count" id="count-cat-apps">0/6</span>
+        <span class="cat-chevron open" id="chev-cat-apps">▶</span>
+      </div>
+      <div class="cat-items open" id="items-cat-apps">
+        <div class="item crit-item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text"><span class="badge badge-crit">중요</span>티머니 잔액 이전 처리</div>
+            <div class="item-note">유심에 잔액 저장 → 유심 교체 시 잔액 삭제. 티머니 앱에서 이전 선행 필수.</div>
+          </div>
+        </div>
+        <div class="item warn-item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text"><span class="badge badge-warn">주의</span>OTP 앱 백업 코드 저장</div>
+            <div class="item-note">구글 OTP / Microsoft Authenticator 등. 백업 코드를 메모지에 따로 저장. 잃으면 계정 잠김.</div>
+          </div>
+        </div>
+        <div class="item warn-item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text"><span class="badge badge-warn">주의</span>모바일 뱅킹 앱 기기 해지</div>
+            <div class="item-note">재등록 절차가 까다로운 앱들 (국민·신한·카카오뱅크 등). 각 앱 설정에서 기기 인증 해지 or 현재 화면 캡처.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">삼성 헬스 데이터 동기화</div>
+            <div class="item-note">삼성 계정 동기화 확인. 걸음수·수면 기록 등 클라우드 백업.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">멜론 / 유튜브 뮤직 오프라인 음악</div>
+            <div class="item-note">오프라인 저장 파일은 앱 재설치 후 다시 받아야 함. 목록만 확인.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">게임 앱 진행데이터 확인</div>
+            <div class="item-note">계정 연동 확인 (구글플레이 게임 or 앱 자체 계정). 로컬 저장 게임은 별도 확인.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-cleanup">
+      <div class="category-header" onclick="toggleCat('cat-cleanup')">
+        <span class="cat-icon">🗑</span>
+        <span class="cat-name">구 폰 정리</span>
+        <span class="cat-count" id="count-cat-cleanup">0/3</span>
+        <span class="cat-chevron open" id="chev-cat-cleanup">▶</span>
+      </div>
+      <div class="cat-items open" id="items-cat-cleanup">
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">삼성 계정 로그아웃</div>
+            <div class="item-note">분실·도용 방지. 설정 → 삼성 계정 → 로그아웃 또는 기기 제거.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">기기 초기화 (중고 매각 시)</div>
+            <div class="item-note">설정 → 일반 → 초기화 → 모든 설정 초기화. 매각 예정이면 필수.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">케이스·액정보호필름 분리</div>
+            <div class="item-note">폴드3 악세사리는 폴드7에 맞지 않음. 미리 빼두기.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AFTER -->
+  <div class="phase">
+    <div class="phase-header">
+      <div class="phase-label">Step 2</div>
+      <div class="phase-title after">교체 후 — 새 폰에서 할 일</div>
+      <div class="phase-progress" id="after-progress">0 / 16 완료</div>
+    </div>
+
+    <div class="category" id="cat-open">
+      <div class="category-header" onclick="toggleCat('cat-open')">
+        <span class="cat-icon">🔌</span>
+        <span class="cat-name">개통</span>
+        <span class="cat-count" id="count-cat-open">0/3</span>
+        <span class="cat-chevron open" id="chev-cat-open">▶</span>
+      </div>
+      <div class="cat-items open" id="items-cat-open">
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">유심 꽂고 재부팅 → 개통 확인</div>
+            <div class="item-note">전화 발신·LTE/5G 데이터 정상 여부 확인.</div>
+          </div>
+        </div>
+        <div class="item crit-item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text"><span class="badge badge-crit">필수</span>유심보호서비스 재가입</div>
+            <div class="item-note">T월드 앱에서 다시 켜기. 개통 확인 후 반드시 재가입. 잊으면 보안 취약.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">요금제 정상 적용 확인</div>
+            <div class="item-note">T월드 앱에서 기변 전과 동일 요금제인지 확인.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-restore">
+      <div class="category-header" onclick="toggleCat('cat-restore')">
+        <span class="cat-icon">🔄</span>
+        <span class="cat-name">데이터 복원</span>
+        <span class="cat-count" id="count-cat-restore">0/4</span>
+        <span class="cat-chevron open" id="chev-cat-restore">▶</span>
+      </div>
+      <div class="cat-items open" id="items-cat-restore">
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">스마트 스위치로 데이터 복원</div>
+            <div class="item-note">USB-C 케이블로 구 폰과 연결. 또는 삼성 클라우드에서 복원.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">카카오톡 대화 복원</div>
+            <div class="item-note">카카오 계정 로그인 후 채팅 → 대화 복원.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">티머니 재등록</div>
+            <div class="item-note">티머니 앱 → 교통카드 → 새 유심에 등록.</div>
+          </div>
+        </div>
+        <div class="item warn-item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text"><span class="badge badge-warn">주의</span>모바일 뱅킹 재등록</div>
+            <div class="item-note">각 앱에서 기기 등록 절차 진행. 본인 인증 필요. 여러 앱이면 시간 여유 두고.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-auth">
+      <div class="category-header" onclick="toggleCat('cat-auth')">
+        <span class="cat-icon">🔐</span>
+        <span class="cat-name">인증 · 금융</span>
+        <span class="cat-count" id="count-cat-auth">0/3</span>
+        <span class="cat-chevron open" id="chev-cat-auth">▶</span>
+      </div>
+      <div class="cat-items open" id="items-cat-auth">
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">공인인증서 / 금융인증서 재발급</div>
+            <div class="item-note">PC or 기존 기기에서 내보내기 or 재발급. 각 은행 앱에서 처리.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">삼성페이 재등록</div>
+            <div class="item-note">삼성페이 앱 → 카드 추가. 카드사 본인 인증 필요.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">카카오페이 재등록</div>
+            <div class="item-note">카카오페이 앱 → 결제 수단 확인 및 재등록.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="category" id="cat-fold7">
+      <div class="category-header" onclick="toggleCat('cat-fold7')">
+        <span class="cat-icon">✨</span>
+        <span class="cat-name">폴드7 전용 설정</span>
+        <span class="cat-count" id="count-cat-fold7">0/6</span>
+        <span class="cat-chevron open" id="chev-cat-fold7">▶</span>
+      </div>
+      <div class="cat-items open" id="items-cat-fold7">
+        <div class="item warn-item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text"><span class="badge badge-warn">절대금지</span>내부 디스플레이 필름 뜯지 말 것</div>
+            <div class="item-note">기본 부착 필름은 보호필름이 아닌 디스플레이 일부. 뜯으면 화면 손상.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">태스크바 표시 여부 설정</div>
+            <div class="item-note">설정 → 디스플레이 → 태스크바. 취향 따라 숨기거나 유지.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">전체화면 앱 비율 강제 설정</div>
+            <div class="item-note">설정 → 디스플레이 → 전체화면 앱 목록. 좁게 뜨는 앱 강제로 펼치기.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">앱 연속 실행 모드 설정</div>
+            <div class="item-note">접었다 펼칠 때 앱 이어서 보기 설정. 설정 → 유용한 기능 → 연속 실행.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">측면 패널(엣지 패널) 정리</div>
+            <div class="item-note">자주 쓰는 앱·연락처로 재배치.</div>
+          </div>
+        </div>
+        <div class="item" onclick="toggle(this)">
+          <div class="check-box"><span class="check-mark">✓</span></div>
+          <div class="item-body">
+            <div class="item-text">케이스·외부 필름 장착</div>
+            <div class="item-note">폴드7 전용 제품 사용. 힌지 부분 맞게 확인.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const TOTAL_BEFORE = 15;
+  const TOTAL_AFTER  = 16;
+
+  const CAT_TOTALS = {
+    'cat-comm':    2,
+    'cat-backup':  4,
+    'cat-apps':    6,
+    'cat-cleanup': 3,
+    'cat-open':    3,
+    'cat-restore': 4,
+    'cat-auth':    3,
+    'cat-fold7':   6
+  };
+
+  const BEFORE_CATS = ['cat-comm','cat-backup','cat-apps','cat-cleanup'];
+  const AFTER_CATS  = ['cat-open','cat-restore','cat-auth','cat-fold7'];
+
+  function toggle(el) {
+    el.classList.toggle('checked');
+    updateAll();
+  }
+
+  function toggleCat(id) {
+    const items = document.getElementById('items-' + id);
+    const chev  = document.getElementById('chev-' + id);
+    items.classList.toggle('open');
+    chev.classList.toggle('open');
+  }
+
+  function updateAll() {
+    const total = TOTAL_BEFORE + TOTAL_AFTER;
+    const done  = document.querySelectorAll('.item.checked').length;
+
+    const pct = Math.round((done / total) * 100);
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = pct + '%';
+
+    let beforeDone = 0, afterDone = 0;
+    BEFORE_CATS.forEach(c => {
+      const cat = document.getElementById('items-' + c);
+      if (cat) beforeDone += cat.querySelectorAll('.item.checked').length;
+    });
+    AFTER_CATS.forEach(c => {
+      const cat = document.getElementById('items-' + c);
+      if (cat) afterDone += cat.querySelectorAll('.item.checked').length;
+    });
+    document.getElementById('before-progress').textContent = beforeDone + ' / ' + TOTAL_BEFORE + ' 완료';
+    document.getElementById('after-progress').textContent  = afterDone  + ' / ' + TOTAL_AFTER  + ' 완료';
+
+    Object.keys(CAT_TOTALS).forEach(id => {
+      const items = document.getElementById('items-' + id);
+      if (!items) return;
+      const d = items.querySelectorAll('.item.checked').length;
+      const t = CAT_TOTALS[id];
+      const cnt = document.getElementById('count-' + id);
+      if (cnt) {
+        cnt.textContent = d + '/' + t;
+        cnt.className = 'cat-count' + (d === t ? ' done' : '');
+      }
+    });
+
+    document.getElementById('doneBanner').classList.toggle('show', done === total);
+  }
+
+  const btn = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  let isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  function applyTheme(dark) {
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    btn.textContent = dark ? '☀' : '🌙';
+    isDark = dark;
+  }
+
+  applyTheme(isDark);
+  btn.addEventListener('click', () => applyTheme(!isDark));
+
+  updateAll();
+</script>
+
+</body>
+</html>
