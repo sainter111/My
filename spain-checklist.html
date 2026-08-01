@@ -1,0 +1,943 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>스페인 여행 체크리스트</title>
+<style>
+/* ── Design tokens ──────────────────────────────────────── */
+:root {
+  --bg:        #F4F2EC;
+  --surface:   #FFFFFF;
+  --surface-2: #EDF0F7;
+  --ink:       #0D1820;
+  --ink-2:     #4A5668;
+  --ink-3:     #8A95A4;
+  --blue:      #0D2B5E;
+  --blue-mid:  #1A4490;
+  --blue-lt:   #D8E3F5;
+  --red:       #CC2B2B;
+  --red-lt:    #FAEAEA;
+  --gold:      #C47E10;
+  --border:    rgba(13,43,94,.1);
+  --shadow-sm: 0 1px 3px rgba(13,43,94,.07);
+  --shadow:    0 2px 12px rgba(13,43,94,.1);
+  --radius:    10px;
+  --r-sm:      6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:        #0B1220;
+    --surface:   #111C30;
+    --surface-2: #18263E;
+    --ink:       #E8EDF6;
+    --ink-2:     #8A98B8;
+    --ink-3:     #5A6880;
+    --blue:      #6A9FE8;
+    --blue-mid:  #4A80D4;
+    --blue-lt:   #1A2E4E;
+    --red:       #E86060;
+    --red-lt:    #2A1414;
+    --gold:      #D4A030;
+    --border:    rgba(106,159,232,.12);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
+    --shadow:    0 2px 12px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="light"] {
+  --bg:#F4F2EC; --surface:#FFFFFF; --surface-2:#EDF0F7;
+  --ink:#0D1820; --ink-2:#4A5668; --ink-3:#8A95A4;
+  --blue:#0D2B5E; --blue-mid:#1A4490; --blue-lt:#D8E3F5;
+  --red:#CC2B2B; --red-lt:#FAEAEA;
+  --gold:#C47E10;
+  --border:rgba(13,43,94,.1);
+  --shadow-sm:0 1px 3px rgba(13,43,94,.07);
+  --shadow:0 2px 12px rgba(13,43,94,.1);
+}
+:root[data-theme="dark"] {
+  --bg:#0B1220; --surface:#111C30; --surface-2:#18263E;
+  --ink:#E8EDF6; --ink-2:#8A98B8; --ink-3:#5A6880;
+  --blue:#6A9FE8; --blue-mid:#4A80D4; --blue-lt:#1A2E4E;
+  --red:#E86060; --red-lt:#2A1414;
+  --gold:#D4A030;
+  --border:rgba(106,159,232,.12);
+  --shadow-sm:0 1px 3px rgba(0,0,0,.3);
+  --shadow:0 2px 12px rgba(0,0,0,.4);
+}
+
+/* ── Reset & Base ───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── Sticky Header ──────────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--blue);
+  color: #fff;
+  padding: 0;
+  box-shadow: 0 2px 16px rgba(0,0,0,.25);
+}
+.header-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 14px 20px 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.header-logo {
+  font-size: 22px;
+  line-height: 1;
+}
+.header-text { flex: 1; }
+.header-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+.header-subtitle {
+  font-size: 0.72rem;
+  opacity: .65;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.header-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.btn-icon {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: var(--r-sm);
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 6px 8px;
+  line-height: 1;
+  transition: background .15s;
+}
+.btn-icon:hover { background: rgba(255,255,255,.22); }
+.btn-icon:focus-visible { outline: 2px solid rgba(255,255,255,.6); }
+
+/* Progress bar */
+.progress-bar-wrap {
+  background: rgba(0,0,0,.2);
+  height: 4px;
+}
+.progress-bar-fill {
+  background: linear-gradient(90deg, #E8C048, #F0D060);
+  height: 100%;
+  width: 0%;
+  transition: width .4s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── Main layout ────────────────────────────────────────── */
+.main {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+
+/* ── Hero / summary card ────────────────────────────────── */
+.summary-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 24px 28px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.summary-ring {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+}
+.summary-ring svg { width: 80px; height: 80px; }
+.ring-track { fill: none; stroke: var(--surface-2); stroke-width: 7; }
+.ring-fill {
+  fill: none;
+  stroke: var(--blue);
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-dasharray: 201;
+  stroke-dashoffset: 201;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset .5s cubic-bezier(.4,0,.2,1);
+}
+.ring-text {
+  font-size: 17px;
+  font-weight: 700;
+  fill: var(--ink);
+  text-anchor: middle;
+  dominant-baseline: middle;
+  font-family: Georgia, serif;
+}
+.summary-info { flex: 1; }
+.summary-heading {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.summary-sub {
+  color: var(--ink-2);
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+}
+.cat-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.cat-pill {
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  padding: 3px 10px;
+  border: 1.5px solid var(--border);
+  color: var(--ink-2);
+  background: var(--surface-2);
+  transition: background .15s, border-color .15s, color .15s;
+  cursor: pointer;
+}
+.cat-pill.done {
+  background: var(--blue-lt);
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+/* ── Share panel ────────────────────────────────────────── */
+.share-panel {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 22px 24px;
+  margin-bottom: 32px;
+  display: none;
+}
+.share-panel.open { display: block; }
+.share-panel-title {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.share-panel-title::before {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 18px;
+  background: var(--red);
+  border-radius: 2px;
+}
+.share-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+.share-btn {
+  align-items: center;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  font-size: 0.88rem;
+  font-weight: 500;
+  gap: 10px;
+  padding: 12px 14px;
+  text-align: left;
+  transition: background .15s, border-color .15s, transform .1s;
+}
+.share-btn:hover {
+  background: var(--blue-lt);
+  border-color: var(--blue-mid);
+  transform: translateY(-1px);
+}
+.share-btn:active { transform: translateY(0); }
+.share-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.share-btn .icon { font-size: 20px; flex-shrink: 0; }
+.share-btn .label { flex: 1; }
+.share-btn .label strong { display: block; font-size: 0.85rem; }
+.share-btn .label span { font-size: 0.75rem; color: var(--ink-3); }
+.share-link-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+.share-link-input {
+  flex: 1;
+  background: var(--surface-2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.78rem;
+  overflow: hidden;
+  padding: 8px 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.share-copy-btn {
+  background: var(--blue);
+  border: none;
+  border-radius: var(--r-sm);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  transition: opacity .15s;
+  white-space: nowrap;
+}
+.share-copy-btn:hover { opacity: .88; }
+.share-copy-btn.copied { background: #2A7A3A; }
+
+/* ── Toast ──────────────────────────────────────────────── */
+.toast {
+  background: var(--ink);
+  border-radius: var(--r-sm);
+  bottom: 28px;
+  color: var(--bg);
+  font-size: 0.85rem;
+  font-weight: 500;
+  left: 50%;
+  opacity: 0;
+  padding: 10px 18px;
+  pointer-events: none;
+  position: fixed;
+  transform: translateX(-50%) translateY(8px);
+  transition: opacity .2s, transform .2s;
+  z-index: 200;
+  white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ── Category sections ──────────────────────────────────── */
+.category {
+  margin-bottom: 28px;
+}
+.cat-header {
+  align-items: center;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+}
+.cat-icon { font-size: 20px; flex-shrink: 0; }
+.cat-name {
+  flex: 1;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.05rem;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+}
+.cat-count {
+  color: var(--ink-3);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+.cat-progress {
+  background: var(--surface-2);
+  border-radius: 100px;
+  height: 4px;
+  margin-left: auto;
+  overflow: hidden;
+  width: 60px;
+}
+.cat-progress-fill {
+  background: var(--blue);
+  border-radius: 100px;
+  height: 100%;
+  transition: width .3s;
+  width: 0%;
+}
+.cat-progress-fill.complete { background: #2A7A3A; }
+
+/* ── Check items ────────────────────────────────────────── */
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  list-style: none;
+}
+.check-item {
+  align-items: flex-start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  padding: 11px 14px;
+  transition: background .12s, border-color .12s;
+  user-select: none;
+}
+.check-item:hover {
+  background: var(--blue-lt);
+  border-color: var(--blue);
+}
+.check-item.checked {
+  background: var(--surface-2);
+  border-color: transparent;
+}
+.check-item.checked .item-label { color: var(--ink-3); text-decoration: line-through; }
+.check-item:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
+
+.checkbox {
+  align-items: center;
+  border: 2px solid var(--ink-3);
+  border-radius: 4px;
+  display: flex;
+  flex-shrink: 0;
+  height: 20px;
+  justify-content: center;
+  margin-top: 1px;
+  transition: border-color .12s, background .12s;
+  width: 20px;
+}
+.check-item.checked .checkbox {
+  background: var(--blue);
+  border-color: var(--blue);
+}
+.check-mark {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 900;
+  opacity: 0;
+  transform: scale(.6);
+  transition: opacity .12s, transform .12s;
+}
+.check-item.checked .check-mark { opacity: 1; transform: scale(1); }
+
+.item-label { flex: 1; font-size: 0.9rem; line-height: 1.45; color: var(--ink); }
+.item-note { color: var(--ink-3); font-size: 0.78rem; display: block; margin-top: 1px; }
+
+/* ── Priority badge ─────────────────────────────────────── */
+.badge {
+  align-self: flex-start;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  margin-top: 3px;
+  padding: 2px 6px;
+  text-transform: uppercase;
+}
+.badge-must { background: var(--red-lt); color: var(--red); }
+.badge-tip  { background: #FFF8E8; color: #8A5A00; }
+:root[data-theme="dark"] .badge-tip { background: #2A2010; color: #D4A030; }
+@media (prefers-color-scheme: dark) {
+  .badge-tip { background: #2A2010; color: #D4A030; }
+}
+
+/* ── Share trigger row ──────────────────────────────────── */
+.share-trigger-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+.share-trigger-btn {
+  align-items: center;
+  background: var(--blue);
+  border: none;
+  border-radius: var(--r-sm);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.9rem;
+  font-weight: 600;
+  gap: 8px;
+  padding: 10px 20px;
+  transition: opacity .15s, transform .1s;
+}
+.share-trigger-btn:hover  { opacity: .88; transform: translateY(-1px); }
+.share-trigger-btn:active { transform: translateY(0); }
+.share-trigger-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* ── Reset button ───────────────────────────────────────── */
+.footer-actions {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+.btn-ghost {
+  background: transparent;
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-sm);
+  color: var(--ink-2);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 9px 18px;
+  transition: border-color .15s, color .15s;
+}
+.btn-ghost:hover { border-color: var(--ink-2); color: var(--ink); }
+
+/* ── Print styles ───────────────────────────────────────── */
+@media print {
+  .site-header, .share-panel, .footer-actions, .toast { display: none !important; }
+  body { background: #fff; color: #000; font-size: 12px; }
+  .main { padding: 0; max-width: 100%; }
+  .summary-card { box-shadow: none; border: 1px solid #ccc; }
+  .check-item { border: 1px solid #ddd; break-inside: avoid; }
+  .category { break-inside: avoid; }
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 540px) {
+  .summary-card { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .summary-ring { margin: 0 auto; }
+  .share-methods { grid-template-columns: 1fr 1fr; }
+  .header-subtitle { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── Sticky Header ── -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-logo" aria-hidden="true">🇪🇸</div>
+    <div class="header-text">
+      <div class="header-title">스페인 여행 체크리스트</div>
+      <div class="header-subtitle">Spain Travel Checklist</div>
+    </div>
+    <div class="header-actions">
+      <button class="btn-icon" id="themeToggle" title="테마 전환" aria-label="다크/라이트 모드 전환">🌙</button>
+      <button class="btn-icon" id="shareToggle" title="공유하기" aria-label="공유 패널 열기">📤</button>
+    </div>
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="progressBar" role="progressbar" aria-label="전체 진행률"></div>
+  </div>
+</header>
+
+<!-- ── Main ── -->
+<main class="main">
+
+  <!-- Summary card -->
+  <div class="summary-card">
+    <div class="summary-ring" aria-hidden="true">
+      <svg viewBox="0 0 72 72">
+        <circle class="ring-track" cx="36" cy="36" r="32"/>
+        <circle class="ring-fill" id="ringFill" cx="36" cy="36" r="32"/>
+        <text class="ring-text" x="36" y="37" id="ringText">0%</text>
+      </svg>
+    </div>
+    <div class="summary-info">
+      <h1 class="summary-heading">스페인 여행 준비</h1>
+      <p class="summary-sub" id="summaryText">아직 시작 전이에요. 하나씩 체크해 볼까요? ✈️</p>
+      <div class="cat-pills" id="catPills"></div>
+    </div>
+  </div>
+
+  <!-- Share button (visible in body) -->
+  <div class="share-trigger-row">
+    <button class="share-trigger-btn" id="shareToggleBody" aria-expanded="false" aria-controls="sharePanel">
+      <span>📤</span> 공유하기
+    </button>
+  </div>
+
+  <!-- Share panel -->
+  <div class="share-panel" id="sharePanel" aria-live="polite">
+    <div class="share-panel-title">공유 방법 선택</div>
+    <div class="share-methods">
+      <button class="share-btn" id="shareNative" style="display:none" onclick="doNativeShare()">
+        <span class="icon">📱</span>
+        <span class="label"><strong>기기 공유</strong><span>카톡·메시지·메일로</span></span>
+      </button>
+      <button class="share-btn" onclick="shareKakao()">
+        <span class="icon">💬</span>
+        <span class="label"><strong>카카오톡 공유</strong><span>링크 주소 복사 후 전송</span></span>
+      </button>
+      <button class="share-btn" onclick="copyLink()">
+        <span class="icon">🔗</span>
+        <span class="label"><strong>링크 복사</strong><span>체크 상태 포함 URL</span></span>
+      </button>
+      <button class="share-btn" onclick="copyText()">
+        <span class="icon">📋</span>
+        <span class="label"><strong>텍스트 복사</strong><span>체크리스트 전체 내용</span></span>
+      </button>
+      <button class="share-btn" onclick="printChecklist()">
+        <span class="icon">🖨️</span>
+        <span class="label"><strong>인쇄하기</strong><span>PDF로 저장 가능</span></span>
+      </button>
+    </div>
+    <div class="share-link-row">
+      <div class="share-link-input" id="shareLinkInput" title="공유 링크">링크 생성 중…</div>
+      <button class="share-copy-btn" id="shareCopyBtn" onclick="copyLink()">복사</button>
+    </div>
+  </div>
+
+  <!-- Checklist sections -->
+  <div id="checklist"></div>
+
+  <div class="footer-actions">
+    <button class="btn-ghost" onclick="resetAll()">전체 초기화</button>
+  </div>
+</main>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+// ── Data ─────────────────────────────────────────────────
+const CATEGORIES = [
+  {
+    id: 'docs',
+    icon: '📋',
+    name: '서류 & 예약',
+    items: [
+      { id: 'passport', label: '여권', note: '유효기간 6개월 이상 남아있는지 확인', must: true },
+      { id: 'flight', label: '항공권 저장/인쇄', note: '이메일 또는 항공사 앱 확인', must: true },
+      { id: 'hotel', label: '숙소 예약 확인서', note: '체크인 시간, 취소 정책 확인' },
+      { id: 'insurance', label: '여행자 보험 가입', note: '의료비·도난 포함 상품 추천', must: true },
+      { id: 'etias', label: 'ETIAS 사전 승인 확인', note: '2025년부터 EU 입국 시 필요 (한국인)', must: true },
+      { id: 'idcard', label: '국제운전면허증', note: '렌터카 계획 있을 때' },
+      { id: 'alhambra', label: '알람브라 궁전 예약', note: '최소 2~3개월 전 예매 필수 ⚠️', must: true },
+      { id: 'sagrada', label: '사그라다 파밀리아 예약', note: '온라인 사전 예매 권장' },
+    ]
+  },
+  {
+    id: 'money',
+    icon: '💶',
+    name: '환전 & 결제',
+    items: [
+      { id: 'euro', label: '유로 환전', note: '소액 현금 + 카드 병행 권장' },
+      { id: 'card', label: '해외 결제 카드 확인', note: '수수료 낮은 카드 준비 (트래블로그, 트래블월렛)' },
+      { id: 'bank', label: '은행 해외 사용 알림 설정', note: '갑자기 카드 차단되는 경우 예방' },
+      { id: 'budget', label: '예산 계획', note: '식비·교통·관광지 입장료 등' },
+    ]
+  },
+  {
+    id: 'pack',
+    icon: '🧳',
+    name: '짐 & 준비물',
+    items: [
+      { id: 'clothes', label: '옷 (날씨별 레이어링)', note: '스페인 낮은 덥고 밤은 선선할 수 있음' },
+      { id: 'shoes', label: '편한 걷기 신발', note: '자갈길·언덕 많음 → 운동화 필수' },
+      { id: 'adapter', label: '유럽 플러그 어댑터', note: 'Type C/F (220V)', must: true },
+      { id: 'battery', label: '보조 배터리', note: '10,000mAh 이상 권장' },
+      { id: 'suncream', label: '선크림 (SPF 50+)', note: '스페인 자외선 매우 강함 ☀️', must: true },
+      { id: 'sunglasses', label: '선글라스 & 모자' },
+      { id: 'meds', label: '상비약', note: '두통약·소화제·지사제·밴드' },
+      { id: 'reusable', label: '접이식 에코백', note: '마트 봉투 유료' },
+      { id: 'camera', label: '카메라 & 충전기' },
+      { id: 'water', label: '물통 (BPA-free)', note: '더운 날씨에 수분 보충 필수' },
+    ]
+  },
+  {
+    id: 'phone',
+    icon: '📱',
+    name: '스마트폰 설정',
+    items: [
+      { id: 'sim', label: '유심 또는 로밍 설정', note: 'eSIM 사전 구매 또는 현지 유심 구매', must: true },
+      { id: 'googlemaps', label: '구글맵 오프라인 저장', note: '주요 도시 미리 다운로드', must: true },
+      { id: 'translate', label: '구글 번역 스페인어 오프라인', note: '카메라 번역 기능 유용' },
+      { id: 'renfe', label: 'Renfe 앱 설치', note: '스페인 기차 예약·탑승 앱' },
+      { id: 'payment', label: '트래블 카드 앱 설치', note: 'Wise·트래블로그 등' },
+    ]
+  },
+  {
+    id: 'spain',
+    icon: '💃',
+    name: '스페인 현지 팁',
+    items: [
+      { id: 'siesta', label: '시에스타 시간 파악', note: '오후 2~5시 가게 문 닫는 경우 많음', tip: true },
+      { id: 'dinner', label: '저녁 식사 시간 확인', note: '스페인은 9~10시에 저녁 먹음 (2~3시간 기다려야 할 수 있음)', tip: true },
+      { id: 'tapas', label: '타파스 문화 익히기', note: '작은 요리 여러 가지 나눠 먹는 스페인식', tip: true },
+      { id: 'sangria', label: '상그리아 vs 티토(Tinto de Verano)', note: '관광지 상그리아보다 현지인 음료 추천', tip: true },
+      { id: 'pickpocket', label: '소매치기 주의', note: '바르셀로나 람블라스 거리·지하철 특히 주의', must: true },
+      { id: 'flamenco', label: '플라멩코 공연 예약', note: '마드리드·세비야·그라나다 추천', tip: true },
+      { id: 'language', label: '기본 스페인어 학습', note: '올라(Hola), 그라시아스(Gracias), 뽀르파보르(Por favor)', tip: true },
+    ]
+  },
+  {
+    id: 'safety',
+    icon: '🛡️',
+    name: '안전 & 비상',
+    items: [
+      { id: 'emergency', label: '긴급 연락처 저장', note: '주스페인 한국 대사관: +34-91-353-2000', must: true },
+      { id: 'copyid', label: '여권 사본 별도 보관', note: '분실 시 필요 → 사진 촬영 & 이메일 발송', must: true },
+      { id: 'ambulance', label: '스페인 긴급번호 확인', note: '112 (통합 긴급전화), 061 (의료)' },
+      { id: 'hotel_info', label: '숙소 주소 오프라인 저장', note: '택시 탑승 시 주소 보여주기 위해' },
+    ]
+  }
+];
+
+// ── State ────────────────────────────────────────────────
+const STORAGE_KEY = 'spain-checklist-v1';
+let checked = {};
+
+function loadState() {
+  // From URL hash first (shared link)
+  const hash = location.hash.slice(1);
+  if (hash) {
+    try {
+      const decoded = JSON.parse(atob(hash));
+      if (decoded && typeof decoded === 'object') {
+        checked = decoded;
+        history.replaceState(null, '', location.pathname + location.search);
+        showToast('공유된 체크리스트를 불러왔어요 ✓');
+        return;
+      }
+    } catch(e) {}
+  }
+  // From localStorage
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) checked = JSON.parse(saved);
+  } catch(e) {}
+}
+
+function saveState() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(checked)); } catch(e) {}
+}
+
+// ── Render ───────────────────────────────────────────────
+function render() {
+  const container = document.getElementById('checklist');
+  container.innerHTML = '';
+
+  CATEGORIES.forEach(cat => {
+    const total = cat.items.length;
+    const done  = cat.items.filter(i => checked[i.id]).length;
+
+    const section = document.createElement('div');
+    section.className = 'category';
+    section.innerHTML = `
+      <div class="cat-header">
+        <span class="cat-icon" aria-hidden="true">${cat.icon}</span>
+        <h2 class="cat-name">${cat.name}</h2>
+        <span class="cat-count" aria-label="${done}/${total} 완료">${done}/${total}</span>
+        <div class="cat-progress" aria-hidden="true">
+          <div class="cat-progress-fill ${done===total && total>0 ? 'complete' : ''}"
+               style="width:${total ? (done/total*100) : 0}%"></div>
+        </div>
+      </div>
+      <ul class="items-list">
+        ${cat.items.map(item => `
+          <li class="check-item${checked[item.id] ? ' checked' : ''}"
+              data-id="${item.id}"
+              tabindex="0"
+              role="checkbox"
+              aria-checked="${!!checked[item.id]}"
+              aria-label="${item.label}${item.note ? ' — ' + item.note : ''}">
+            <div class="checkbox" aria-hidden="true">
+              <span class="check-mark">✓</span>
+            </div>
+            <span class="item-label">
+              ${item.label}
+              ${item.note ? `<span class="item-note">${item.note}</span>` : ''}
+            </span>
+            ${item.must ? '<span class="badge badge-must">필수</span>' : ''}
+            ${item.tip  ? '<span class="badge badge-tip">팁</span>'  : ''}
+          </li>
+        `).join('')}
+      </ul>
+    `;
+    container.appendChild(section);
+  });
+
+  // Bind events
+  container.querySelectorAll('.check-item').forEach(el => {
+    el.addEventListener('click', () => toggle(el.dataset.id));
+    el.addEventListener('keydown', e => {
+      if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); toggle(el.dataset.id); }
+    });
+  });
+
+  updateProgress();
+  renderCatPills();
+  updateShareLink();
+}
+
+function toggle(id) {
+  checked[id] = !checked[id];
+  saveState();
+  render();
+}
+
+// ── Progress ─────────────────────────────────────────────
+function getTotals() {
+  const allItems = CATEGORIES.flatMap(c => c.items);
+  return { total: allItems.length, done: allItems.filter(i => checked[i.id]).length };
+}
+
+function updateProgress() {
+  const { total, done } = getTotals();
+  const pct = total ? Math.round(done / total * 100) : 0;
+
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressBar').setAttribute('aria-valuenow', pct);
+
+  // Ring
+  const circumference = 201; // 2π × 32
+  const offset = circumference - (pct / 100 * circumference);
+  document.getElementById('ringFill').style.strokeDashoffset = offset;
+  document.getElementById('ringText').textContent = pct + '%';
+
+  // Summary text
+  const summaryEl = document.getElementById('summaryText');
+  if (pct === 0)        summaryEl.textContent = '아직 시작 전이에요. 하나씩 체크해 볼까요? ✈️';
+  else if (pct < 30)    summaryEl.textContent = `좋은 시작이에요! ${done}개 완료 — 계속해봐요 💪`;
+  else if (pct < 60)    summaryEl.textContent = `절반에 가까워지고 있어요! ${done}개 완료 🙌`;
+  else if (pct < 90)    summaryEl.textContent = `거의 다 왔어요! 마지막 점검 중… ${done}개 완료 🎯`;
+  else if (pct < 100)   summaryEl.textContent = `완벽에 가까워요! 마무리 단계 ${done}개 완료 🔥`;
+  else                  summaryEl.textContent = '준비 완료! 즐거운 스페인 여행 되세요 🇪🇸✨';
+}
+
+function renderCatPills() {
+  const el = document.getElementById('catPills');
+  el.innerHTML = CATEGORIES.map(cat => {
+    const done = cat.items.filter(i => checked[i.id]).length;
+    const all  = cat.items.length;
+    return `<button class="cat-pill${done===all ? ' done' : ''}"
+              onclick="document.querySelector('[data-cat="${cat.id}"]')?.scrollIntoView({behavior:'smooth'})"
+              aria-label="${cat.name} ${done}/${all}">
+              ${cat.icon} ${cat.name} ${done}/${all}
+            </button>`;
+  }).join('');
+  // Add data-cat to sections
+  document.querySelectorAll('.category').forEach((el, i) => {
+    el.setAttribute('data-cat', CATEGORIES[i].id);
+  });
+}
+
+// ── Share ────────────────────────────────────────────────
+function buildShareUrl() {
+  const encoded = btoa(JSON.stringify(checked));
+  return `${location.origin}${location.pathname}#${encoded}`;
+}
+
+function updateShareLink() {
+  const url = buildShareUrl();
+  const input = document.getElementById('shareLinkInput');
+  if (input) input.textContent = url;
+}
+
+function copyLink() {
+  const url = buildShareUrl();
+  navigator.clipboard.writeText(url).then(() => {
+    const btn = document.getElementById('shareCopyBtn');
+    btn.textContent = '복사됨 ✓';
+    btn.classList.add('copied');
+    showToast('링크가 복사되었어요! (체크 상태 포함) 🔗');
+    setTimeout(() => { btn.textContent = '복사'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+function copyText() {
+  const lines = ['🇪🇸 스페인 여행 체크리스트\n'];
+  CATEGORIES.forEach(cat => {
+    lines.push(`\n${cat.icon} ${cat.name}`);
+    cat.items.forEach(item => {
+      const mark = checked[item.id] ? '✅' : '⬜';
+      lines.push(`${mark} ${item.label}${item.note ? ` (${item.note})` : ''}`);
+    });
+  });
+  const { total, done } = getTotals();
+  lines.push(`\n— 진행률: ${done}/${total} (${Math.round(done/total*100)}%)`);
+
+  navigator.clipboard.writeText(lines.join('\n')).then(() => {
+    showToast('체크리스트 텍스트를 복사했어요 📋');
+  });
+}
+
+function shareKakao() {
+  const url = buildShareUrl();
+  navigator.clipboard.writeText(url).then(() => {
+    showToast('링크 복사 완료! 카카오톡에 붙여넣기 하세요 💬');
+  });
+}
+
+function doNativeShare() {
+  const url = buildShareUrl();
+  navigator.share({ title: '🇪🇸 스페인 여행 체크리스트', url }).catch(() => {});
+}
+
+function printChecklist() {
+  window.print();
+}
+
+function resetAll() {
+  if (!confirm('모든 체크 항목을 초기화할까요?')) return;
+  checked = {};
+  saveState();
+  render();
+  showToast('초기화되었어요');
+}
+
+// ── Toast ────────────────────────────────────────────────
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ── Theme ────────────────────────────────────────────────
+let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+function applyTheme() {
+  document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+  document.getElementById('themeToggle').textContent = darkMode ? '☀️' : '🌙';
+}
+document.getElementById('themeToggle').addEventListener('click', () => {
+  darkMode = !darkMode;
+  applyTheme();
+});
+
+// ── Share panel toggle ───────────────────────────────────
+function toggleSharePanel() {
+  const panel = document.getElementById('sharePanel');
+  const isOpen = panel.classList.toggle('open');
+  document.getElementById('shareToggle').setAttribute('aria-expanded', isOpen);
+  document.getElementById('shareToggleBody').setAttribute('aria-expanded', isOpen);
+  document.getElementById('shareToggleBody').textContent = isOpen ? '✕ 닫기' : '📤 공유하기';
+  if (isOpen) { updateShareLink(); panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+}
+document.getElementById('shareToggle').addEventListener('click', toggleSharePanel);
+document.getElementById('shareToggleBody').addEventListener('click', toggleSharePanel);
+
+// ── Native share availability ────────────────────────────
+if (navigator.share) {
+  document.getElementById('shareNative').style.display = 'flex';
+}
+
+// ── Init ─────────────────────────────────────────────────
+loadState();
+applyTheme();
+render();
+</script>
+</body>
+</html>
