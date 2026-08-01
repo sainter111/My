@@ -458,6 +458,30 @@ body {
   .badge-tip { background: #2A2010; color: #D4A030; }
 }
 
+/* ── Share trigger row ──────────────────────────────────── */
+.share-trigger-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+.share-trigger-btn {
+  align-items: center;
+  background: var(--blue);
+  border: none;
+  border-radius: var(--r-sm);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  font-size: 0.9rem;
+  font-weight: 600;
+  gap: 8px;
+  padding: 10px 20px;
+  transition: opacity .15s, transform .1s;
+}
+.share-trigger-btn:hover  { opacity: .88; transform: translateY(-1px); }
+.share-trigger-btn:active { transform: translateY(0); }
+.share-trigger-btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
 /* ── Reset button ───────────────────────────────────────── */
 .footer-actions {
   margin-top: 40px;
@@ -533,6 +557,13 @@ body {
       <p class="summary-sub" id="summaryText">아직 시작 전이에요. 하나씩 체크해 볼까요? ✈️</p>
       <div class="cat-pills" id="catPills"></div>
     </div>
+  </div>
+
+  <!-- Share button (visible in body) -->
+  <div class="share-trigger-row">
+    <button class="share-trigger-btn" id="shareToggleBody" aria-expanded="false" aria-controls="sharePanel">
+      <span>📤</span> 공유하기
+    </button>
   </div>
 
   <!-- Share panel -->
@@ -887,12 +918,16 @@ document.getElementById('themeToggle').addEventListener('click', () => {
 });
 
 // ── Share panel toggle ───────────────────────────────────
-document.getElementById('shareToggle').addEventListener('click', () => {
+function toggleSharePanel() {
   const panel = document.getElementById('sharePanel');
   const isOpen = panel.classList.toggle('open');
   document.getElementById('shareToggle').setAttribute('aria-expanded', isOpen);
+  document.getElementById('shareToggleBody').setAttribute('aria-expanded', isOpen);
+  document.getElementById('shareToggleBody').textContent = isOpen ? '✕ 닫기' : '📤 공유하기';
   if (isOpen) { updateShareLink(); panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
-});
+}
+document.getElementById('shareToggle').addEventListener('click', toggleSharePanel);
+document.getElementById('shareToggleBody').addEventListener('click', toggleSharePanel);
 
 // ── Native share availability ────────────────────────────
 if (navigator.share) {
