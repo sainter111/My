@@ -47,7 +47,7 @@
 |---|---|---|---|
 | p2 | 국내 독점 **라이센스** 보유 | 국내 독점 **라이선스** 보유 | 외래어표기법 |
 | p2 도식 | Official Import / Installation / **Local A/S** | Official Import / Installation / **Local After-Sales Service** | `A/S`는 영어권에서 통용되지 않는 조어 |
-| p3 배너 | **ASIA FIRST INTRODUCTION** | **FIRST IN ASIA** | 영어로 부자연스러움 |
+| p3 배너 | ASIA FIRST **INTRODUCTION** | **ASIA'S FIRST** | `INTRODUCTION`이 영어로 어색.<br>**「아시아 최초」 주장 자체는 유지·강화 — 7-6 참조** |
 | 전 페이지 워터마크 | **"Play the Tomorrow"** | **전량 삭제** | 문법 오류 (타동사 play + the tomorrow) |
 | p1 영문 제목 | Gwangju Lotte Construction Playground Project | **LOTTE CASTLE GWANGJU JUNGANG**<br>Playground Design Proposal | 현행은 "광주롯데건설"이라는 별도 회사로 읽힘 |
 | p5·p6·p8·p9·p11 러닝헤드 | GWANGJU LOTTE CONSTRUCTION | **LOTTE CASTLE GWANGJU JUNGANG** | 동일 사유 |
@@ -72,7 +72,7 @@
 
 1. 표지(p1) 하단에 3개소 합계 배지를 신설할 것:
    ```
-   3 SITES · 1,105㎡ · 195명 · 148 PLAY FUNCTIONS · FIRST IN ASIA
+   3 SITES · 1,105㎡ · 195명 · 148 PLAY FUNCTIONS · 아시아 최초
    ```
 2. 3개소 수치 배지 하단에 8pt 각주를 추가할 것:
    ```
@@ -292,6 +292,64 @@ HORIZON · DISCOVER · IMAGINE — 놀이의 끝은 언제나 확장입니다.
 
 > ⚠️ **[확인요망]** 현장 인근 지형·조망축은 실제 대지 조건 확인 후 기재할 것. 틀리면 역효과입니다.
 
+## 7-6. ★ 「아시아 최초」 — 유지하되, 근거로 강화
+
+**이 제안서의 가장 강력한 차별점입니다. 삭제하거나 완화하지 마십시오.**
+다만 현재는 **주장만 있고 근거가 없습니다.** 주장은 근거가 붙을 때 강해집니다.
+
+현행 문구:
+> *"본 제안 제품의 아시아 최초 도입을 통해, 광주중앙만의 차별화된 시그니처 놀이터를 구현합니다."*
+
+### ① 근거 한 줄 추가 — 배너 하단 소형 텍스트
+
+```
+J56011 Kanopé · J6102 Kairn · Aquatica — 3개 기종 모두 아시아 미설치 기종
+Proludic France 확인 [확인요망]
+```
+→ 품번을 명시하는 순간 **"마케팅 수사"가 "검증 가능한 사실"로 바뀝니다.**
+
+### ② 본사 실적과 결합 — 숫자가 클레임을 떠받친다
+
+```
+55개국 150,000개소.
+그러나 아시아에는, 아직 없습니다.
+
+광주중앙이 처음입니다.
+```
+
+현재 p2의 「55개국 150,000개소」와 p3의 「아시아 최초」가 **따로 놀고 있습니다.**
+두 숫자를 한 문장으로 묶으면 서로를 떠받칩니다.
+*'15만 개소를 지은 회사가 아시아에는 아직 안 지었다'* — 이 대비가 희소성을 만듭니다.
+
+### ③ 노출 위치 확대 — 현재 p3 배너 한 곳뿐
+
+| 위치 | 문구 |
+|---|---|
+| p1 표지 배지 | `… · 아시아 최초` |
+| p3 배너 | **ASIA'S FIRST** / 아시아 최초 도입 (현행 유지 + 근거 추가) |
+| p4 · p6 · p8 푸터 | 아시아 최초 도입 기종 |
+
+→ **첫 장에서 박고, 세 번 반복합니다.**
+
+### ④ 방어는 헤드라인이 아니라 뒤에서
+
+"검증 안 된 것 아닌가"라는 우려는 심사에서 반드시 나옵니다.
+그러나 **그 방어를 배너에 붙이면 클레임이 약해집니다.**
+
+```
+공격은 앞에(p3), 방어는 뒤에(p11).
+```
+
+→ p11 Q&A 5번 행이 이미 그 역할을 합니다:
+*"유럽 [확인요망]개소 · [확인요망]년 운영 / 제품은 검증됐고, 아시아에 없을 뿐입니다"*
+
+### ⑤ 분양 카피 연결
+
+```
+광주에 없던 놀이터, 아시아에 없던 놀이터.
+```
+→ 상품기획 담당이 바로 쓸 수 있는 문장입니다. PT 구두 전달용.
+
 ---
 
 # 8. 슬로건 · 워딩 통합
@@ -334,12 +392,11 @@ HORIZON · DISCOVER · IMAGINE — 놀이의 끝은 언제나 확장입니다.
 |---|---|---|
 | p3 대제목 | THREE PLAYSCAPES, ONE SIGNATURE | **THREE CASTLES, ONE LOTTE CASTLE** |
 | p2 하단 | Not just imported. Designed to be different. | **Not imported. Designed for Gwangju.**<br>수입한 것이 아니라, 이곳을 위해 설계한 것입니다 |
-| p3 배너 | ASIA FIRST INTRODUCTION | **FIRST IN ASIA, NOT FIRST TIME**<br>아시아에서는 처음이지만, 세계에서는 처음이 아닙니다 |
+| p3 배너 | ASIA FIRST INTRODUCTION | **ASIA'S FIRST** / 아시아 최초 도입<br>**클레임 유지 · 근거 추가 (7-6 참조)** |
 | 전 페이지 | "Play the Tomorrow" 워터마크 | **삭제** |
 
-> **`FIRST IN ASIA, NOT FIRST TIME`은 반드시 세트로 쓸 것.**
-> "아시아 최초"는 차별화인 동시에 **"검증 안 됨" 리스크**입니다.
-> 심사에서 100% 나오는 질문에 대한 선제 답변입니다.
+> **「아시아 최초」는 삭제하거나 완화하지 말 것.** 이 제안서의 가장 강력한 차별점입니다.
+> 영문 `INTRODUCTION`만 교정하고, 주장은 **근거를 붙여 강화**합니다. → **7-6**
 
 ## 8-5. 푸터 띠 전환
 
@@ -370,6 +427,7 @@ HORIZON · DISCOVER · IMAGINE — 놀이의 끝은 언제나 확장입니다.
 □ 각 블록 키워드가 3개이며, 개요·상세 페이지에서 동일한가
 □ WOW / ACTIVE PLAY / PLAY FLOW / SYMBOL 키워드가 삭제되었는가
 □ "Play the Tomorrow"가 문서 전체에서 0건인가
+□ 「아시아 최초」가 표지·p3·푸터 3곳에 노출되고, 근거 품번이 병기되었는가
 □ 3개 블록이 각 2장씩 대칭인가
 □ 모든 마스터플랜 페이지에 규격 띠가 있는가
 □ 총 페이지 수가 정확히 11장인가
