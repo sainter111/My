@@ -1,0 +1,71 @@
+수정한 제안서 PPT를 첨부했다. 누락과 오류가 있는지 검수해라.
+고치지는 말고, 확인 결과만 보고해라.
+
+■ 방법
+
+PPT의 모든 텍스트를 페이지별로 추출한 뒤 아래를 대조해라.
+텍스트가 아니라 이미지로 들어가 있어서 추출되지 않는 부분은
+"이미지라 확인 불가"로 따로 표시해라. 추측하지 마라.
+
+■ 확인 항목
+
+1. 아래 문자열이 문서 전체에서 0건인지
+   롯데태슬 / 난판선 / CHALLNGE / 인전하고 / 놀이골간 / 복함 /
+   WPC 동 / Fish Springe / 모티브로한 / 라이센스 /
+   Play the Tomorrow / Local A/S /
+   GWANGJU LOTTE CONSTRUCTION
+
+2. 2-2BL 수치가 전 페이지에서 동일한지
+   면적 387.5㎡ / 동시이용 64명 이상 / 놀이기능 45개 이상
+   (p3 카드 본문, p3 하단 아이콘, p10 하단 배지 세 곳을 전부 확인)
+
+3. 표지에 3개소 합계 배지가 있는지
+   3 SITES / 1,105㎡ / 195명 / 148 PLAY FUNCTIONS / 아시아 최초
+
+4. 제품명 표기가 전 페이지 동일한지
+   Kanopé (Kanope 0건) / Kairn (Kairm 0건)
+   Woodland 또는 Woodwind 중 한쪽으로 통일되었는지
+   소재코드가 3SCD6 또는 3SSCD6 중 한쪽으로 통일되었는지
+
+5. 블록 라벨이 구분되는지
+   p7 = 2-1BL / p10 = 2-2BL  (둘 다 "광주중앙2BL"이면 안 됨)
+
+6. 3개소 네이밍이 교체되었는지 (컨셉 페이지와 마스터플랜 페이지 양쪽)
+   FOREST CASTLE / CHALLENGE CASTLE / OCEAN CASTLE
+   구 명칭(FOREST LANDMARK / ACTIVE ADVENTURE / OCEAN STORY)이 남아 있는지
+
+7. 슬로건이 정리되었는지
+   THE FIRST CASTLE 과 THREE CASTLES, ONE LOTTE CASTLE 이 들어갔는지
+   Different Experiences. One Design Language. 가 남아 있는지
+
+8. 컨셉 키워드가 블록당 3개인지
+   FOREST CASTLE     NATURE / CLIMB / HORIZON
+   CHALLENGE CASTLE  CHALLENGE / MOVE / DISCOVER
+   OCEAN CASTLE      SAIL / MEET / IMAGINE
+   아래 단어가 남아 있는지 — WOW / ACTIVE PLAY / PLAY FLOW / SYMBOL /
+   LANDMARK / VERTICAL PLAY / MARINE STORY / MARINE SYMBOL
+
+9. p8 DESIGN CONCEPT가 3개 항목인지 (NATURE가 빠졌는지)
+   p8 CLIMBING 설명문 안에 STORY CONCEPT 텍스트가 남아 있는지
+
+10. p3에 지역 서사 문장이 들어갔는지
+    무등산 / 광주천 / 영산강
+
+11. 「아시아 최초」가 표지·p3·푸터 세 곳에 있는지
+
+12. 푸터가 11장 모두 같은 문구인지, 아니면 페이지별로 달라졌는지
+
+13. 페이지 수가 정확히 11장인지
+
+14. 책임·보증 문구가 있는지 (있으면 안 됨)
+    지체상금 / 전량 교체 / 민원 / 보증 연한 / 손해배상
+
+■ 출력
+
+항목별로 아래 셋 중 하나로 표시하고, 문제가 있으면 페이지와 현재 문구를 적어라.
+
+  OK          문제 없음
+  수정필요     문제 있음 — 어느 페이지의 무엇인지 적을 것
+  확인불가     이미지라서 텍스트 추출이 안 됨
+
+마지막에 "수정필요" 항목만 모아서 목록으로 다시 정리해라.
